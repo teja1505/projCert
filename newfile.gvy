@@ -5,7 +5,7 @@ pipeline {
 	         steps {
                 // step1 
                 echo 'compiling..'
-		            git url: 'https://github.com/teja1505/PetClinic'
+		            git url: 'https://github.com/teja1505/projCert'
 		            sh script: '/opt/maven/bin/mvn compile'
            }
         }
@@ -60,8 +60,8 @@ pipeline {
 	         steps {
               withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://index.docker.io/v1/') {
                     sh script: 'cd  $WORKSPACE'
-                    sh script: 'docker build --file Dockerfile --tag docker.io/teja150595/petclinic:$BUILD_NUMBER .'
-                    sh script: 'docker push docker.io/teja150595/petclinic:$BUILD_NUMBER'
+                    sh script: 'docker build --file Dockerfile --tag docker.io/teja150595/project:$BUILD_NUMBER .'
+                    sh script: 'docker push docker.io/teja150595/project:$BUILD_NUMBER'
               }	
            }		
         }
